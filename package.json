@@ -9,6 +9,8 @@
     "build": "vite build",
     "preview": "node server.js",
     "test:server": "node scripts/verify-server.mjs",
+    "test:webhook": "node --test scripts/verify-webhook.mjs",
+    "webhook": "node webhook-server.js",
     "audit": "node scripts/audit-project.mjs"
   },
   "dependencies": {

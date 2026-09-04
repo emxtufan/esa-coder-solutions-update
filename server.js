@@ -4,8 +4,19 @@ import { realpath, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { pipeline } from 'node:stream/promises';
+import { loadEnvFile } from 'node:process';
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
+
+export function loadServerEnvironment(filename = path.join(projectRoot, '.env')) {
+  try {
+    // Existing hosting/shell variables take precedence over the local file.
+    loadEnvFile(filename);
+  } catch (error) {
+    if (error.code !== 'ENOENT') throw error;
+  }
+}
+
 const mimeTypes = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -121,9 +132,10 @@ export async function createSiteServer({ root = path.join(projectRoot, 'dist') }
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const port = Number(process.env.PORT || 4173);
-  const host = process.env.HOST || '127.0.0.1';
   try {
+    loadServerEnvironment();
+    const port = Number(process.env.PORT || 4173);
+    const host = process.env.HOST || '127.0.0.1';
     if (!Number.isInteger(port) || port < 1 || port > 65535) throw new Error('PORT trebuie sa fie intre 1 si 65535.');
     const server = await createSiteServer();
     server.on('error', error => {

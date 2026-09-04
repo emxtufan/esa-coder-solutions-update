@@ -1,7 +1,27 @@
 import assert from 'node:assert/strict';
 import http from 'node:http';
+import { execFileSync } from 'node:child_process';
 import { readFile } from 'node:fs/promises';
 import { createSiteServer } from '../server.js';
+
+const envCheck = `
+  import assert from 'node:assert/strict';
+  import { loadServerEnvironment } from ${JSON.stringify(new URL('../server.js', import.meta.url).href)};
+  import { fileURLToPath } from 'node:url';
+  delete process.env.HOST;
+  delete process.env.PORT;
+  const example = fileURLToPath(${JSON.stringify(new URL('../.env.example', import.meta.url).href)});
+  loadServerEnvironment(example);
+  assert.equal(process.env.HOST, '127.0.0.1');
+  assert.equal(process.env.PORT, '4173');
+  process.env.PORT = '8080';
+  loadServerEnvironment(example);
+  assert.equal(process.env.PORT, '8080');
+  loadServerEnvironment(example + '.missing');
+  assert.equal(process.env.PORT, '8080');
+`;
+execFileSync(process.execPath, ['--input-type=module', '-e', envCheck]);
+console.log('PASS: incarcare .env, prioritate variabile hosting/terminal, fisier optional.');
 
 const server = await createSiteServer();
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
