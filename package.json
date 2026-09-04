@@ -4,9 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "start": "node server.js",
     "dev": "vite --host 127.0.0.1 --port 5173",
     "build": "vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 4173",
+    "preview": "node server.js",
+    "test:server": "node scripts/verify-server.mjs",
     "audit": "node scripts/audit-project.mjs"
   },
   "dependencies": {

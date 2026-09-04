@@ -1,23 +1,36 @@
 # ESA Coder Solutions
 
-Site React/Vite pentru ESA: prezentare, servicii, proces, portofoliu, intrebari si contact. Include animatii GSAP, scene 3D cu `ESA_logo_1.glb` si identitatea negru-auriu.
+Site React pentru ESA, livrat de un server Node: prezentare, servicii, proces, portofoliu, intrebari si contact. Include animatii GSAP, scene 3D cu `ESA_logo_1.glb` si identitatea negru-auriu.
 
 ## Pornire
 
 ```sh
 npm install
-npm run dev
 npm run build
-npm run preview
-npm run audit
+npm start
 ```
 
 In Windows PowerShell se poate folosi `npm.cmd` in loc de `npm`.
-Dezvoltare: http://127.0.0.1:5173/ . Preview productie: http://127.0.0.1:4173/ .
+Site: http://127.0.0.1:4173/ . Necesita Node.js 20 sau mai nou.
+
+`npm start` porneste `server.js`, fara Vite si fara dependinte externe de server. Livreaza `dist/index.html`, JavaScript, CSS, imagini, fonturi si modelele 3D. Rutele React precum `/contact` functioneaza inclusiv la refresh. Resursele inexistente si cererile API primesc 404; fisierele sursa, `.env` si hartile sursa nu sunt publicate.
+
+Vite ramane doar pentru compilare (`npm run build`) si, optional, dezvoltare cu actualizare automata (`npm run dev`). Dupa modificarea surselor, ruleaza din nou build-ul. `npm run preview` este un alias pentru acelasi server Node. Daca `dist/` exista deja, este suficient `npm start`.
+
+Portul implicit este 4173, iar serverul asculta doar local. Pentru alt port sau acces din retea, seteaza explicit variabilele in PowerShell:
+
+```powershell
+$env:PORT = "8080"
+$env:HOST = "0.0.0.0"
+npm.cmd start
+```
+
+Pentru publicare sunt suficiente `server.js` si folderul `dist/`, pornite cu `node server.js`; nu este necesar `node_modules`. HTTPS se configureaza separat la furnizorul de hosting sau printr-un reverse proxy. Serverul nu trimite emailuri si nu implementeaza backend-ul QR.
 
 ## Structura
 
 - `src/`: paginile, componentele, animatiile, tema si rutarea ESA.
+- `server.js`: serverul HTTP Node pentru site-ul compilat.
 - `src/vendor/`: bibliotecile necesare animatiilor si scenelor 3D. Sunt dependinte active, nu o copie a paginii originale.
 - `public/assets/esa/`: logo-uri, imagini de portofoliu si fonturi ESA.
 - `public/assets/`: modelul 3D, iluminarea HDR si fonturile folosite de site.
@@ -46,7 +59,7 @@ Nu se trimite niciun email automat. Draftul nu contine destinatar sau cont exped
 
 ## Verificari
 
-`npm run audit` verifica fisierele aplicatiei si absenta exportului vechi. Scripturile `scripts/verify-*.mjs` verifica identitatea ESA, efectele si asset-urile. `verify-esa-content.mjs` necesita preview-ul pornit pe portul 4173.
+`npm run audit` verifica fisierele aplicatiei si absenta exportului vechi. `npm run test:server` verifica serverul pe un port temporar liber, dupa build. Scripturile `scripts/verify-*.mjs` verifica identitatea ESA, efectele si asset-urile. `verify-esa-content.mjs` necesita serverul pornit pe portul 4173.
 
 ## Limite existente
 
