@@ -1,0 +1,24 @@
+ESA CODER SOLUTIONS / EMAIL SCURT, FORMAL
+
+Subiect: Propunere de colaborare | ESA Coder Solutions
+
+- email-clienti.eml: draft cu varianta HTML si text simplu, fara imagini sau
+  atasamente. Nu are destinatar sau expeditor completat. Deschiderea ca draft
+  editabil depinde de aplicatia de email folosita.
+- email-clienti.html: varianta formatata, cu o linie aurie si semnatura discreta.
+- email-clienti.txt: varianta simpla, usor de copiat si personalizat.
+
+Emailul contine un singur link, catre site-ul ESA. Nu include proiecte,
+butoane, imagini, fonturi externe sau elemente de urmarire.
+
+Completeaza destinatarul si contul expeditorului. Poti inlocui salutul cu
+numele persoanei si adauga numele tau in semnatura. Trimite un test catre tine
+inainte de folosire. Emailul trebuie trimis ca mesaj, nu ca atasament HTML,
+EML sau ZIP. Aspectul poate varia intre aplicatiile de email.
+
+Nu a fost trimis niciun mesaj. Varianta a fost verificata in browser,
+nu intr-un inbox Gmail/Outlook. Designul simplu nu garanteaza livrarea in inbox.
+Cererea de a nu mai primi mesaje se gestioneaza manual, prin raspuns.
+
+Versiunea anterioara cu portofoliu este pastrata in arhiva
+ESA-email-clienti-newsletter.zip, din folderul parinte.

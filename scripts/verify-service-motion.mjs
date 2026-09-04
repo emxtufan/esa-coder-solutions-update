@@ -1,0 +1,11 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import { parse } from '@babel/parser';
+const source = fs.readFileSync('src/components/ESAContent.jsx', 'utf8');
+const css = fs.readFileSync('src/components/ESAContent.css', 'utf8');
+parse(source, { sourceType: 'module', plugins: ['jsx'] });
+assert.equal((source.match(/\['0[1-6]'/g) || []).length, 6);
+for (const fragment of ['<HeadingReveal.default className="esa-service-title">', "start: 'top 85%'", 'once: true', "stagger: 0.09", 'motion.revert()', '(prefers-reduced-motion: no-preference)', 'aria-hidden="true"']) assert.ok(source.includes(fragment), fragment);
+for (const fragment of ['@media(hover:hover) and (pointer:fine)', '@media(prefers-reduced-motion:reduce)', '.esa-service:hover h3', 'overflow:clip', 'pointer-events:none']) assert.ok(css.includes(fragment), fragment);
+assert.ok(!source.includes('ScrollTrigger.getAll()'));
+console.log('PASS: six service cards, existing heading masks, staggered scroll reveal, scoped cleanup, hover and reduced-motion guards.');

@@ -1,0 +1,43 @@
+/* Color-only adaptation. Original structural and animation CSS is preserved. */
+html{color-scheme:dark;background:var(--brand-background)}
+body{background:var(--brand-background);color:var(--brand-text)}
+::selection{background:var(--brand-gold);color:var(--brand-onGold)}
+.bg-brand-surface{background-color:var(--brand-surface)}
+.bg-brand-gold{background-color:var(--brand-gold)}
+.bg-brand-ivory{background-color:var(--brand-text)}
+.bg-brand-gold\/95{background-color:color-mix(in srgb,var(--brand-gold) 95%,transparent)}
+.text-brand-gold{color:var(--brand-gold)}
+.text-brand-light{color:var(--brand-text)}
+.border-brand-gold{border-color:var(--brand-gold)}
+.hover\:text-brand-light:hover{color:var(--brand-light)}
+.focus\:border-brand-gold:focus{border-color:var(--brand-gold)}
+button.bg-brand-gold,nav .bg-brand-gold{color:var(--brand-onGold)}
+button.bg-brand-gold:hover,nav a.bg-brand-gold:hover{background-color:var(--brand-light)}
+nav{box-shadow:0 0 0 1px #d4ab5833,0 8px 32px #0006}
+/* The supplied transparent ESA artwork, white on the dark brand surfaces. */
+.esa-navbar-logo,.esa-footer-logo{display:block;height:auto;object-fit:contain;filter:brightness(0) invert(1)}
+.esa-navbar-logo{width:clamp(96px,9vw,144px)}
+.esa-footer-logo-mask{width:84%;margin:0 auto;overflow:hidden;padding-top:3vw}
+.esa-footer-logo{width:100%}
+/* Keep dark ink on gold process cards; use ivory on their dark canvas. */
+.esa-contact{background:var(--brand-background);color:var(--brand-text)}
+/* Original work composition: accent-colored field, dark type, black CTA. */
+.esa-work-surface{background:var(--brand-gold);color:#000}
+.esa-work-surface button.bg-black{color:#fff}
+.esa-content{background:var(--brand-background);color:var(--brand-text)}
+.esa-heading span,.esa-eyebrow{color:var(--brand-gold)}
+.esa-services,.esa-service,.esa-faq details,.esa-contact-line{border-color:#d4ab583b}
+.esa-number,.esa-service .esa-deliverables,.esa-faq details p,.esa-contact-help{color:var(--brand-muted)}
+.esa-faq summary:focus-visible{outline-color:var(--brand-gold)}
+/* Gold work -> ivory questions -> black finale: both column wipes stay visible. */
+.esa-content.esa-questions{position:relative;margin-top:-1px;background:var(--brand-text);color:var(--brand-onGold);color-scheme:light}
+.esa-questions .esa-heading span,.esa-questions .esa-eyebrow{color:#78571f}
+.esa-questions .esa-faq details p{color:#514a3c}
+.esa-questions .esa-faq details,.esa-questions .esa-contact-line{border-color:#15110a33}
+.esa-questions .esa-faq summary:focus-visible{outline-color:#78571f}
+.esa-contact .text-black\/70,.esa-contact .text-black\/50,.esa-contact .text-black\/40,.esa-contact .text-black\/30{color:var(--brand-muted)}
+.esa-contact .border-black\/10,.esa-contact .border-black\/20{border-color:#d4ab5859}
+.esa-contact input,.esa-contact textarea{color:var(--brand-text);caret-color:var(--brand-gold)}
+.esa-contact input::placeholder,.esa-contact textarea::placeholder{color:#a7a195;opacity:1}
+.esa-contact input:focus,.esa-contact textarea:focus{border-color:var(--brand-gold)}
+.esa-contact input:autofill{box-shadow:0 0 0 1000px var(--brand-surface) inset;-webkit-text-fill-color:var(--brand-text)}

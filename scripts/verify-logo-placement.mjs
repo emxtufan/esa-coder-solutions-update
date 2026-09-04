@@ -1,0 +1,18 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read = path => fs.readFileSync(path, 'utf8');
+const navigation = read('src/components/Navigation.jsx');
+const home = read('src/pages/HomePage.jsx');
+assert.ok(navigation.includes('src="/assets/esa/logo.png" alt="ESA Coder Solutions" width="2785" height="778"'));
+assert.ok(home.includes('src="/assets/esa/esa-coder-solutions-lockup-transparent.png" alt="ESA Coder Solutions" width="1800" height="900"'));
+const symbol = fs.readFileSync('public/assets/esa/logo.png');
+assert.equal(symbol.readUInt32BE(16), 2785);
+assert.equal(symbol.readUInt32BE(20), 778);
+assert.ok(!navigation.includes('{"ESA Coder"}'));
+assert.ok(!home.includes('new textPlugin.SplitText(u.current'));
+assert.ok(home.includes('let e = u.current;'));
+assert.ok(home.includes('<FooterLogo scaleProgress={n} scrollVelocity={o} />'));
+const lockup = fs.readFileSync('public/assets/esa/esa-coder-solutions-lockup-transparent.png');
+assert.equal(lockup.readUInt32BE(16), 1800);
+assert.equal(lockup.readUInt32BE(20), 900);
+console.log('PASS: supplied logo in navigation and footer, accessible names, correct dimensions, image reveal, unchanged 3D footer.');
