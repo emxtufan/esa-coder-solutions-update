@@ -154,7 +154,7 @@ export default () => {
       (
         <div
           ref={l}
-          className={`h-screen max-md:h-svh w-full fixed inset-0 z-99999 flex items-center justify-center transition-opacity duration-500 ${p ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+          className={`esa-viewport-overlay esa-preloader z-99999 flex items-center justify-center transition-opacity duration-500 ${p ? "opacity-100" : "opacity-0 pointer-events-none"}`}
         >
           <div ref={c} className="absolute inset-0 flex">
             {[...Array(7)].map((e, r) => (
@@ -163,7 +163,7 @@ export default () => {
           </div>
           <div
             ref={d}
-            className="relative z-10 w-full h-full flex flex-col justify-between px-[3vw] py-[3vh]"
+            className="esa-preloader-content relative z-10 w-full h-full flex flex-col justify-between"
           >
             <div className="flex justify-between items-start">
               <div className="overflow-hidden">

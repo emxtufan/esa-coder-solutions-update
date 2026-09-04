@@ -1910,7 +1910,7 @@ export default () => {
       </div>
       <nav
         ref={E}
-        className="fixed bottom-6 max-md:bottom-4 left-1/2 -translate-x-1/2 w-[30vw] min-w-[400px] max-md:w-[90vw] max-md:min-w-0 bg-black rounded-[0.5vw] max-md:rounded-xl py-[.5vw] px-[1vw] max-md:py-3 max-md:px-4 flex items-center justify-between z-150"
+        className="esa-bottom-nav fixed bottom-6 max-md:bottom-4 left-1/2 -translate-x-1/2 w-[30vw] min-w-[400px] max-md:w-[90vw] max-md:min-w-0 bg-black rounded-[0.5vw] max-md:rounded-xl py-[.5vw] px-[1vw] max-md:py-3 max-md:px-4 flex items-center justify-between z-150"
       >
         <div
           className="flex items-center gap-[1vw] max-md:gap-3 cursor-pointer"

@@ -132,7 +132,7 @@ export default ({ children: e }) => {
     <jsxRuntime.Fragment>
       <div
         ref={o}
-        className="fixed top-0 left-0 w-full h-screen flex pointer-events-auto"
+        className="esa-viewport-overlay flex pointer-events-auto"
         style={{
           zIndex: 9999,
         }}
