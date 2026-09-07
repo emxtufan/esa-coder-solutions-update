@@ -29,6 +29,20 @@
 }
 .esa-method-note{display:grid;grid-template-columns:1fr 1fr;gap:7vw;margin-top:40px;font-size:17px;line-height:1.6}
 .esa-method-note p{margin:0}.esa-method-note p:first-child{font-weight:600}
+.esa-method-note{margin-top:clamp(48px,6vw,88px);align-items:center}
+.esa-method-heading h3{font-family:var(--font-bebas-neue),Impact,sans-serif;font-size:clamp(42px,4.8vw,72px);font-weight:400;line-height:1.05;text-transform:uppercase;margin:0}
+.esa-method-heading .esa-method-emphasis{color:var(--brand-gold)}
+.esa-method-note>p{max-width:34em;color:var(--brand-muted)}
+/* A full-width brand-gold statement gives the custom-development message weight. */
+.esa-craft-note{position:relative;overflow:clip;display:grid;grid-template-columns:1fr 1fr;gap:7vw;margin:clamp(40px,5vw,72px) -6vw 0;padding:clamp(40px,5vw,72px) 6vw;background:var(--brand-gold);color:var(--brand-onGold);color-scheme:light}
+.esa-craft-label{margin:0 0 24px;font-size:14px;letter-spacing:.12em;font-weight:600}
+.esa-craft-note h3{margin:0;font-family:var(--font-bebas-neue),Impact,sans-serif;font-size:clamp(42px,4.6vw,72px);font-weight:400;line-height:1.05;text-transform:uppercase}
+.esa-craft-note h3 span{color:inherit}
+.esa-craft-copy{min-width:0;max-width:36em;font-size:clamp(18px,1.4vw,21px);font-weight:400;line-height:1.6}
+.esa-craft-copy p{margin:0 0 22px}
+.esa-craft-copy p:last-child{margin-bottom:0}
+.esa-craft-copy .esa-craft-signoff{margin-top:28px;padding-top:22px;border-top:1px solid #15110a55;font-size:inherit;font-weight:400;line-height:inherit}
+@media(max-width:900px){.esa-craft-note{grid-template-columns:1fr;gap:26px}.esa-craft-copy{max-width:42em}}
 .esa-questions{padding-bottom:32vh}
 .esa-faq details{border-top:1px solid #d4ab583b;padding:22px 0;font-size:17px;line-height:1.6}
 .esa-faq summary{cursor:pointer;font-weight:600;padding-right:20px}

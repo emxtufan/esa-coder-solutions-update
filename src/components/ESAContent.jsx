@@ -4,6 +4,7 @@ import * as HeadingReveal from './HeadingReveal.jsx';
 import * as AnimatedButton from './AnimatedButton.jsx';
 import Link from '../routing/Router.jsx';
 import SectionWipe from './SectionWipe.jsx';
+import TechnologyCarousel from './TechnologyCarousel.jsx';
 import './ESAContent.css';
 
 const { gsap } = getVendor(89970);
@@ -37,6 +38,18 @@ export function ESAProfile() {
             ease: 'power3.out', clearProps: 'opacity,transform',
           }, 0.12);
       });
+      const craft = profile.current.querySelector('.esa-craft-note');
+      gsap.timeline({
+        scrollTrigger: { trigger: craft, start: 'top 85%', once: true },
+      })
+        .fromTo(craft.querySelector('.esa-craft-label'), { opacity: 0, y: 18 }, {
+          opacity: 1, y: 0, duration: 0.6, ease: 'power3.out',
+          clearProps: 'opacity,transform',
+        }, 0)
+        .fromTo(craft.querySelectorAll('.esa-craft-copy > p'), { opacity: 0, y: 28 }, {
+          opacity: 1, y: 0, duration: 0.8, stagger: 0.16,
+          ease: 'power3.out', clearProps: 'opacity,transform',
+        }, 0.2);
     }, profile);
     return () => motion.revert();
   }, []);
@@ -64,9 +77,21 @@ export function ESAProfile() {
         ))}
       </div>
       <div className="esa-method-note">
-        <p>Tehnologia urmeaza proiectul, nu invers.</p>
+        <HeadingReveal.default className="esa-method-heading"><h3>Tehnologia urmeaza<br />proiectul, <span className="esa-method-emphasis">nu invers.</span></h3></HeadingReveal.default>
         <p>React / Next.js, JavaScript, Express, Python sau Shopify: alegerea depinde de ce construim, de integrarile necesare si de felul in care vei administra produsul.</p>
       </div>
+      <TechnologyCarousel />
+      <aside id="esa-custom-approach" className="esa-craft-note" aria-labelledby="esa-craft-title">
+        <div>
+          <p className="esa-craft-label">MODUL NOSTRU DE LUCRU</p>
+          <HeadingReveal.default variant="black"><h3 id="esa-craft-title">Gandire umana.<br /><span>Dezvoltare custom.</span></h3></HeadingReveal.default>
+        </div>
+        <div className="esa-craft-copy">
+          <p>Fiecare website este dezvoltat custom, in jurul afacerii tale. Structura, designul si functionalitatile sunt lucrate individual, cu decizii asumate de oamenii implicati in proiect.</p>
+          <p>Folosim AI ca tehnologie si instrument de lucru, nu ca substitut pentru gandire, creativitate sau responsabilitate. Nu livram un site generat automat si publicat ca atare: fiecare rezultat este adaptat, verificat si finisat pentru proiectul tau.</p>
+          <p className="esa-craft-signoff">AI ne sprijina. Directia ne apartine.</p>
+        </div>
+      </aside>
     </section>
   );
 }

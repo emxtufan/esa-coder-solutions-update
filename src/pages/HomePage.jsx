@@ -1478,7 +1478,8 @@ let FooterLogo = ({ scaleProgress: e, scrollVelocity: t }) => {
                 duration: 0.8,
                 ease: "power3.out",
                 scrollTrigger: {
-                  trigger: u.current,
+                  // Measure the stationary mask, not the image translated below it.
+                  trigger: e.parentElement,
                   start: window.innerWidth < 768 ? "top 100%" : "top 80%",
                   end: "top 50%",
                   toggleActions: "play none none reverse",
